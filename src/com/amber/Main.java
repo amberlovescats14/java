@@ -2,8 +2,10 @@ package com.amber;
 
 //This is imported to use a reference from a different package
 import java.awt.*;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
 
@@ -77,12 +79,76 @@ public class Main {
         // Double.parseDouble()
 
         //MATHEMATICAL OPERATIONS
-        int result = Math.round(1.1F);
-
-        int res = (int)Math.ciel(1.1F); // u have to cast int
+//        int result = Math.round(1.1F);
+//
+//        int res = (int)Math.ciel(1.1F); // u have to cast int
         //floor
         //max(1,2) min(1,2)
         //.random
+
+
+        ///FORMAT NUMBER
+//        NumberFormat currency = NumberFormat.getCurrencyInstance();
+//            String result = currency.format(2122.99);
+//            System.out.println(result);
+//            //OR
+////        String currency = NumberFormat.getCurrencyInstance().format(124132);
+//
+//            NumberFormat percent = NumberFormat.getPercentInstance();
+//            String results = percent.format(0.1); //10 percent
+//        System.out.println(results);
+
+
+        //INPUT FROM THE USER
+        //this will take in Age: and take the input on the same line
+        //then it will print out based on what the user inputted
+//        Scanner scanner = new Scanner(System.in); // Input from the terminal
+//        System.out.print("Age: ");
+//        //nextByte nextBoolean
+//        // then OUTPUT
+//        byte age = scanner.nextByte();
+////        if you want nextFloat
+//        System.out.println("You are " + age);
+
+//        another example
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("Name: ");
+//        String name = scan.nextLine().trim();
+//        System.out.println("You are " + name);
+
+//        MORTGAGE CALCULATOR
+        final byte MONTHS_IN_YEAR = 12;
+        final byte PERCENT = 100;
+
+        Scanner principalIn = new Scanner(System.in);
+        System.out.println("Principal: " );
+        double principalSave = principalIn.nextDouble();
+
+        Scanner annualIn = new Scanner(System.in);
+        System.out.println("Annual Interest Rate: ");
+        double annualSave = (annualIn.nextDouble() / PERCENT) / MONTHS_IN_YEAR;
+
+        Scanner periodIn = new Scanner(System.in);
+        System.out.println("Years: ");
+        int periodSave = periodIn.nextInt();
+
+        double top = annualSave * Math.pow((1 + annualSave), periodSave);
+        System.out.println("top: " + top);
+        double bottom = Math.pow((1 + annualSave), periodSave) - 1;
+        System.out.println("bottom : " + bottom);
+        double divided = top / bottom;
+        System.out.println("divided: " + divided);
+        double multiply = principalSave * divided;
+        System.out.println("multiple : " + multiply);
+
+        String mortgage = NumberFormat.getCurrencyInstance().format(multiply);
+        System.out.println(mortgage);
+
+
+
+
+
+
 
 
 
